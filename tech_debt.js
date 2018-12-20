@@ -1,3 +1,7 @@
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
 var sourceData = [{
     name: 'sonar',
     difficulty: 14.56,
@@ -33,14 +37,14 @@ var sourceData = [{
     difficulty: 41.1,
     description: '描述信息',
     importance: 12.8
-}]
+}];
 
 var seriesData = sourceData.map(function (item, index, array) {
     return {
         name: item['name'],
         value: [item['difficulty'], item['importance'], item['description']]
     }
-})
+});
 
 option = {
     title: {
@@ -58,7 +62,7 @@ option = {
             },
         },
         formatter: function (obj) {
-            if (obj.componentType == "series") {
+            if (obj.componentType === "series") {
                 return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">' +
                     obj.name +
                     '</div>' +
@@ -79,7 +83,6 @@ option = {
         }
     },
     itemStyle: {
-
         normal: {
             color: '#fff',
             borderColor: '#333333'
@@ -178,95 +181,9 @@ option = {
                     }
                 }
             }]
-        },
-        // markArea: {
-        //     silent: true,
-        //     data: [
-        //         [{
-        //             name: '改进',
-        //             itemStyle: {
-        //                 normal: {
-        //                     color:'transparent'
-        //                 },
-        //             },
-        //             label: {
-        //                 normal: {
-        //                     show: true,
-        //                     position: 'insideTopLeft',
-        //                     backgroundColor:'transparent',
-        //                     fontStyle: 'normal',
-        //                     color: "#409EFF",
-        //                     fontSize: 20,
-        //                 }
-        //             },
-        //             coord: [400, 50],
-        //         }, {
-        //             coord: [401, 49],
-        //         }],
-        //         [{
-        //             name: '淘汰',
-        //             itemStyle: {
-        //                 normal: {
-        //                     color: 'transparent',
-        //                 },
-        //             },
-        //             label: {
-        //                 normal: {
-        //                     show: true,
-        //                     position: 'insideTopRight',
-        //                     backgroundColor:'transparent',
-        //                     fontStyle: 'normal',
-        //                     color: "#409EFF",
-        //                     fontSize: 20,
-        //                 }
-        //             },
-        //             coord: [0, 0],
-        //         }, {
-        //             coord: [avg.difficultyAvgLine, avg.importanceAvgLine],
-        //         }],
-        //         [{
-        //             name: '保持',
-        //             itemStyle: {
-        //                 normal: {
-        //                     color: 'transparent',
-        //                 },
-        //             },
-        //             label: {
-        //                 normal: {
-        //                     show: true,
-        //                     position: 'insideBottomLeft',
-        //                     backgroundColor:'transparent',
-        //                     fontStyle: 'normal',
-        //                     color: "#409EFF",
-        //                     fontSize: 20,
-        //                 }
-        //             },
-        //             coord: [401, 51],
-        //         }, {
-        //             coord: [Number.MAX_VALUE, Number.MAX_VALUE],
-        //         }],
-        //         [{
-        //             name: '激励',
-        //             itemStyle: {
-        //                 normal: {
-        //                     color: 'transparent',
-        //                 },
-        //             },
-        //             label: {
-        //                 normal: {
-        //                     show: true,
-        //                     position: 'insideBottomRight',
-        //                     backgroundColor:'transparent',
-        //                     fontStyle: 'normal',
-        //                     color: "#409EFF",
-        //                     fontSize: 20,
-        //                 }
-        //             },
-        //             coord: [0, Number.MAX_VALUE],
-        //         }, {
-        //             coord: [avg.difficultyAvgLine, avg.importanceAvgLine],
-        //         }],
-        //     ]
-        // }
+        }
     }]
 };
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
