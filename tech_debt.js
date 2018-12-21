@@ -12,7 +12,7 @@ function init() {
                 name: item['name'],
                 value: [item['difficulty'], item['importance'], item['description']]
             }
-        })
+        });
         option = {
             title: {
                 text: '技术债',
