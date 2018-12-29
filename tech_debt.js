@@ -1,3 +1,4 @@
+var echarts = require('echarts')
 var dom = document.getElementById("container");
 var myChart = echarts.init(dom);
 var option = null;
@@ -163,7 +164,7 @@ function loadJSON(callback) {
 
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.overrideMimeType("application/json");
-    xmlHttp.open('GET', 'data.json', true);
+    xmlHttp.open('GET', './data.json', true);
     xmlHttp.onreadystatechange = function () {
         if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
             callback(xmlHttp.responseText);
